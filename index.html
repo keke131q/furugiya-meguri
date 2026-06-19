@@ -6,35 +6,33 @@
     <title>古着屋MEGURI | 一期一会のヴィンテージセレクトショップ</title>
     <meta name="description" content="優しい雰囲気と確かな品質。あなたに一番「似合う」一期一会の古着をお届けするヴィンテージショップ「古着屋MEGURI」の公式ページです。">
     
-    <!-- Google Fonts の読み込み -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 全体のカラースキームと基本設定 --- */
+        /* --- 変数設定（カラーパレット） --- */
         :root {
-            --bg-color: #F9F8F6; /* 温かみのあるオフホワイト */
-            --text-main: #4A413D; /* 柔らかいチャコールブラウン */
-            --text-light: #7A6F6A;
-            --accent-color: #8D7B68; /* 信頼感のあるモカブラウン */
-            --accent-light: #D5C9B8;
-            --white: #FFFFFF;
+            --bg-base: #F9F8F6; /* 全体背景：温かいオフホワイト */
+            --bg-section: #FFFFFF; /* セクション背景：白 */
+            --text-main: #3E3633; /* メインテキスト：濃いチャコール */
+            --text-light: #7A6F6A; /* サブテキスト */
+            --accent-main: #8D7B68; /* メインカラー：モカブラウン */
+            --accent-sub: #D5C9B8; /* サブカラー：ベージュ */
+            --accent-gold: #C2A878; /* 強調カラー：落ち着いたゴールド */
         }
 
-        html {
-            scroll-behavior: smooth; /* スムーススクロール */
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-base);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.8;
             -webkit-font-smoothing: antialiased;
-            padding-top: 70px; /* 固定ヘッダーの余白 */
+            padding-top: 70px;
         }
 
         h1, h2, h3, .serif {
@@ -42,296 +40,223 @@
             font-weight: 600;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
 
-        /* --- ヘッダー＆ナビゲーション（ホームページの要） --- */
+        /* --- ヘッダー --- */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            position: fixed; top: 0; left: 0; width: 100%;
             background-color: rgba(249, 248, 246, 0.95);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            box-sizing: border-box;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 20px; box-sizing: border-box;
+            height: 70px;
         }
         
-        .logo {
-            font-size: 20px;
-            letter-spacing: 0.1em;
-            color: var(--accent-color);
-            margin: 0;
+        .header-brand {
+            display: flex; align-items: center; gap: 12px;
         }
 
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 15px;
+        /* ★ 左上の丸いロゴアイコン ★ */
+        .brand-icon {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--accent-sub);
+            /* ↓ ここにロゴ画像のURLを入れます（現在はダミー画像） */
+            background-image: url('https://placehold.co/100x100/8D7B68/FFF?text=M');
+            background-size: cover;
+            background-position: center;
         }
 
-        nav a {
-            font-size: 13px;
-            font-weight: 500;
-            transition: color 0.3s ease;
+        .logo-text { font-size: 20px; letter-spacing: 0.1em; color: var(--accent-main); margin: 0; }
+
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
+        nav a { font-size: 13px; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: var(--accent-gold); }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; } /* スマホではメニュー非表示ですっきり見せる */
         }
 
-        nav a:hover {
-            color: var(--accent-color);
-        }
+        /* --- 共通レイアウト --- */
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
 
-        /* スマホ向けのナビゲーション調整 */
-        @media (max-width: 600px) {
-            nav ul {
-                display: none; /* スマホではヘッダーメニューを隠す（必要に応じてハンバーガーメニュー等に拡張可能） */
-            }
-        }
-
-        /* --- レイアウト設定 --- */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 50px 0;
-        }
-
-        /* --- ヒーローセクション（トップ） --- */
+        /* --- ヒーローセクション --- */
         .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(to bottom, #F9F8F6, #EFECE5);
-            border-radius: 0 0 40px 40px;
-            margin-bottom: 40px;
+            text-align: center; padding: 80px 20px;
+            background: linear-gradient(135deg, #F9F8F6 0%, #EAE5DC 100%);
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 60px;
         }
-
-        .hero h2 {
-            font-size: 28px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-            color: var(--text-main);
-        }
-
-        .hero p {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 30px;
-        }
-
+        .hero h2 { font-size: 32px; line-height: 1.6; margin-bottom: 20px; color: var(--text-main); }
+        .hero p { font-size: 15px; color: var(--text-light); margin-bottom: 40px; }
+        
         .btn-main {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 16px 40px;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            box-shadow: 0 4px 15px rgba(141, 123, 104, 0.3);
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background-color: var(--accent-main); color: #fff;
+            padding: 16px 45px; border-radius: 40px;
+            font-size: 16px; font-weight: 500; letter-spacing: 0.05em;
+            box-shadow: 0 8px 20px rgba(141, 123, 104, 0.3);
             transition: all 0.3s ease;
         }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(141, 123, 104, 0.4); background-color: #7A6957; }
 
-        .btn-main:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(141, 123, 104, 0.4);
-            background-color: #7A6957;
+        /* --- セクションタイトル --- */
+        .section-title { text-align: center; font-size: 28px; margin-bottom: 50px; position: relative; color: var(--text-main); }
+        .section-title::after {
+            content: ''; display: block; width: 50px; height: 2px;
+            background-color: var(--accent-gold); margin: 20px auto 0;
         }
 
-        /* --- 共通セクションタイトル --- */
-        .section-title {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 30px;
+        /* --- コンセプト（深掘り） --- */
+        .concept-wrapper {
+            background-color: var(--bg-section); padding: 50px 40px;
+            border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid rgba(213, 201, 184, 0.4); text-align: center;
+        }
+        .concept-lead { font-size: 20px; color: var(--accent-main); margin-bottom: 30px; line-height: 1.6; }
+        .concept-text { font-size: 15px; text-align: left; color: var(--text-light); margin-bottom: 20px; }
+        .concept-text:last-child { margin-bottom: 0; }
+
+        /* --- 古着の価値（Vintage Value）新設 --- */
+        .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+        .value-card { text-align: center; padding: 20px; }
+        .value-icon { font-size: 40px; margin-bottom: 15px; color: var(--accent-gold); }
+        .value-card h4 { font-size: 18px; margin-bottom: 15px; }
+        .value-card p { font-size: 14px; color: var(--text-light); text-align: left; }
+
+        /* --- カテゴリー --- */
+        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .category-card {
+            background-color: var(--bg-section); border: 1px solid var(--accent-sub);
+            border-radius: 16px; padding: 25px 10px; text-align: center;
+            transition: all 0.3s ease; display: flex; flex-direction: column;
+        }
+        .category-card:hover { background-color: var(--accent-main); color: #fff; transform: translateY(-3px); }
+        .category-card span { font-size: 15px; font-weight: 500; }
+        .category-card .icon { font-size: 28px; margin-bottom: 12px; }
+
+        /* --- インスタグラム（UI/UX考慮のギャラリー）新設 --- */
+        .instagram-section { text-align: center; }
+        .ig-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 30px;
+        }
+        .ig-item {
+            aspect-ratio: 1 / 1; background-color: #ddd; border-radius: 8px; overflow: hidden;
             position: relative;
         }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent-light);
-            margin: 15px auto 0;
-        }
-
-        /* --- News（お知らせ）セクション --- */
-        .news-list {
-            background-color: var(--white);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(213, 201, 184, 0.3);
-        }
-        .news-item {
-            display: flex;
-            border-bottom: 1px dashed var(--accent-light);
-            padding: 12px 0;
-            font-size: 14px;
-        }
-        .news-item:last-child {
-            border-bottom: none;
-        }
-        .news-date {
-            color: var(--accent-color);
-            font-weight: bold;
-            width: 90px;
-            flex-shrink: 0;
-        }
-
-        /* --- コンセプト --- */
-        .concept-box {
-            background-color: var(--white);
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid rgba(213, 201, 184, 0.3);
-        }
-        .concept-box p {
-            font-size: 14px;
-            text-align: left;
-            margin-bottom: 15px;
-        }
-        .concept-box p:last-child { margin-bottom: 0; }
-
-        /* --- カテゴリー検索 --- */
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-        .category-card {
-            background-color: var(--white);
-            border: 1px solid var(--accent-light);
-            border-radius: 12px;
-            padding: 20px 10px;
-            text-align: center;
+        /* ダミー画像。後で実際の商品画像に差し替えます */
+        .ig-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .ig-item:hover img { transform: scale(1.05); }
+        
+        .btn-outline {
+            display: inline-block; padding: 12px 35px; border: 2px solid var(--accent-main);
+            border-radius: 30px; color: var(--accent-main); font-weight: 500; font-size: 15px;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
-        .category-card:hover {
-            background-color: var(--accent-color);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-        .category-card span { font-size: 14px; font-weight: 500; }
-        .category-card .icon { font-size: 24px; margin-bottom: 10px; }
+        .btn-outline:hover { background-color: var(--accent-main); color: #fff; }
 
-        /* --- ガイド＆店舗情報 --- */
+        /* --- お得情報・ガイド --- */
         .info-card {
-            background-color: var(--text-main);
-            color: var(--white);
-            padding: 30px;
-            border-radius: 16px;
+            background-color: var(--text-main); color: #fff;
+            padding: 40px 30px; border-radius: 24px;
         }
-        .info-card h3 {
-            font-size: 18px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 15px;
-            margin-top: 0; margin-bottom: 20px;
-        }
-        .info-list { list-style: none; padding: 0; margin: 0; font-size: 14px; }
-        .info-list li { margin-bottom: 15px; padding-left: 20px; position: relative; }
-        .info-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-light); font-weight: bold; }
-        .highlight { color: #E2C391; font-weight: bold; font-size: 16px; }
-
-        .shop-details {
-            background-color: var(--white);
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 20px;
-            border: 1px solid var(--accent-light);
-            font-size: 14px;
-            text-align: center;
-        }
+        .info-card h3 { font-size: 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-top: 0; margin-bottom: 25px; }
+        .info-list { list-style: none; padding: 0; margin: 0; font-size: 15px; }
+        .info-list li { margin-bottom: 18px; padding-left: 25px; position: relative; }
+        .info-list li::before { content: '✨'; position: absolute; left: 0; color: var(--accent-gold); font-size: 12px; top: 3px;}
+        .highlight { color: var(--accent-gold); font-weight: bold; font-size: 18px; border-bottom: 1px solid var(--accent-gold); }
 
         /* --- フッター --- */
         footer {
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 12px;
-            color: var(--text-light);
-            background-color: #EFECE5;
+            text-align: center; padding: 50px 20px; font-size: 13px; color: var(--text-light);
+            background-color: #EFECE5; margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
-    <!-- ナビゲーションメニュー（ホームページ化の象徴） -->
+    <!-- ヘッダー -->
     <header>
-        <h1 class="logo serif">古着屋MEGURI</h1>
+        <div class="header-brand">
+            <!-- ★ここにロゴが表示されます★ -->
+            <div class="brand-icon"></div>
+            <h1 class="logo-text serif">古着屋MEGURI</h1>
+        </div>
         <nav>
             <ul>
-                <li><a href="#concept">Concept</a></li>
-                <li><a href="#category">Category</a></li>
+                <li><a href="#concept">Story</a></li>
+                <li><a href="#category">Item</a></li>
+                <li><a href="#instagram">Instagram</a></li>
                 <li><a href="#guide">Guide</a></li>
-                <li><a href="#shop">Shop Info</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- ヒーローエリア -->
     <div class="hero">
         <div class="container">
             <h2 class="serif">服がめぐる。<br>想いがめぐる。</h2>
-            <p>あなたと一番「似合う」<br>一期一会のヴィンテージをお届けします。</p>
-            <!-- ↓ メルカリのURLに書き換えてください ↓ -->
-            <a href="https://jp.mercari.com/" target="_blank" rel="noopener" class="btn-main">メルカリ店舗を見る</a>
+            <p>あなたと一番「似合う」<br>一期一会のヴィンテージを、ここから。</p>
+            <a href="https://jp.mercari.com/" target="_blank" rel="noopener" class="btn-main">
+                メルカリでアイテムを見る
+            </a>
         </div>
     </div>
 
     <main class="container">
         
-        <!-- News（お知らせ）セクションを追加 -->
-        <section id="news" style="padding-top: 0;">
-            <h2 class="section-title serif">News</h2>
-            <div class="news-list">
-                <div class="news-item">
-                    <div class="news-date">2024.06.10</div>
-                    <div class="news-text">夏物アイテム（Tシャツ・半袖シャツ）大量入荷しました！</div>
+        <!-- コンセプト（深掘り） -->
+        <section id="concept" style="padding-top: 0;">
+            <h2 class="section-title serif">Our Story</h2>
+            <div class="concept-wrapper">
+                <p class="concept-lead serif">「めぐる、生きる。」<br>古着の持つ、あたたかい物語。</p>
+                <p class="concept-text">はじめまして。ヴィンテージセレクトショップ「古着屋MEGURI」です。</p>
+                <p class="concept-text">私たちは、ただ古い服を販売しているわけではありません。誰かが大切に着てきた服が、海や時を越えて、次に大切にしてくださる「あなた」の元へめぐっていく。その素敵なバトンリレーのお手伝いをしています。</p>
+                <p class="concept-text">優しい雰囲気の中にも、カチッとした大人の信頼感があるアイテム。一点一点、丁寧に検品とケアを行い、現代のトレンドに合うように厳選してセレクトしています。</p>
+            </div>
+        </section>
+
+        <!-- ★新設：古着の魅力・価値 ★ -->
+        <section id="value">
+            <h2 class="section-title serif">Vintage Value</h2>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h4 class="serif">Only One</h4>
+                    <p>古着の最大の魅力は「一期一会」。現在では作られていないデザインやディテールなど、世界に一つだけの、あなただけの特別な一着に出会えます。</p>
                 </div>
-                <div class="news-item">
-                    <div class="news-date">2024.06.01</div>
-                    <div class="news-text">公式ホームページをオープンいたしました。</div>
+                <div class="value-card">
+                    <div class="value-icon">🌿</div>
+                    <h4 class="serif">Sustainable</h4>
+                    <p>今ある服を大切に受け継ぐことは、環境に優しいサステナブルな選択です。MEGURIは、ファッションを楽しみながら未来の地球を想うライフスタイルを提案します。</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⏳</div>
+                    <h4 class="serif">Aging</h4>
+                    <p>デニムのフェード感や生地のくったりとした柔らかさ。新品には出せない、時を重ねた服だけが持つ「経年変化の美しさ」と味わいをお楽しみください。</p>
                 </div>
             </div>
         </section>
 
-        <!-- コンセプト -->
-        <section id="concept">
-            <div class="concept-box">
-                <h3 class="serif">Concept</h3>
-                <p>はじめまして。古着屋MEGURIをご覧いただきありがとうございます。</p>
-                <p>私たちは、一つ一つの服が「めぐる、生きる」ことを大切にしています。</p>
-                <p>サステナブルな時代だからこそ、誰かが大切にしてきた服を、次に大切にしてくださるあなたへ。優しい雰囲気の中にも、確かな品質と信頼感のあるアイテムを厳選してセレクトしています。</p>
-            </div>
-        </section>
-
-        <!-- カテゴリー検索 -->
+        <!-- カテゴリー -->
         <section id="category">
             <h2 class="section-title serif">Category</h2>
-            <p style="text-align: center; font-size: 13px; color: var(--text-light); margin-bottom: 25px;">
-                タップするとメルカリのジャンル別在庫が表示されます
+            <p style="text-align: center; font-size: 14px; color: var(--text-light); margin-bottom: 30px;">
+                タップするとメルカリのジャンル別ページへ移動します
             </p>
             <div class="category-grid">
                 <a href="https://jp.mercari.com/search?keyword=%23MEGURI_トップス" target="_blank" rel="noopener" class="category-card">
                     <span class="icon">👕</span>
-                    <span>トップス</span>
+                    <span>トップス全般</span>
                 </a>
                 <a href="https://jp.mercari.com/search?keyword=%23MEGURI_ジャケット_アウター" target="_blank" rel="noopener" class="category-card">
                     <span class="icon">🧥</span>
-                    <span>アウター</span>
+                    <span>アウター・羽織り</span>
                 </a>
                 <a href="https://jp.mercari.com/search?keyword=%23MEGURI_パンツ" target="_blank" rel="noopener" class="category-card">
                     <span class="icon">👖</span>
@@ -341,44 +266,58 @@
                     <span class="icon">👗</span>
                     <span>ワンピース</span>
                 </a>
-                <a href="https://jp.mercari.com/search?keyword=%23MEGURI_古着" target="_blank" rel="noopener" class="category-card" style="grid-column: span 2; background-color: var(--bg-color);">
-                    <span>✨ すべてのアイテムを見る ✨</span>
+                <a href="https://jp.mercari.com/search?keyword=%23MEGURI_古着" target="_blank" rel="noopener" class="category-card" style="grid-column: span 2; background-color: var(--accent-sub); border: none;">
+                    <span style="color: var(--text-main);">✨ すべてのアイテムを見る ✨</span>
                 </a>
             </div>
+        </section>
+
+        <!-- ★新設：Instagramセクション ★ -->
+        <section id="instagram" class="instagram-section">
+            <h2 class="section-title serif">Instagram</h2>
+            <p style="font-size: 14px; color: var(--text-light); margin-bottom: 30px;">
+                最新の入荷情報や、おすすめのスタイリングを発信中。<br>ぜひフォローしてチェックしてください。
+            </p>
+            
+            <!-- インスタ風ギャラリーUI（ここに商品の写真を当てはめます） -->
+            <div class="ig-grid">
+                <div class="ig-item"><img src="https://placehold.co/400x400/EAE5DC/8D7B68?text=Item+1" alt="Instagram Item 1"></div>
+                <div class="ig-item"><img src="https://placehold.co/400x400/EAE5DC/8D7B68?text=Item+2" alt="Instagram Item 2"></div>
+                <div class="ig-item"><img src="https://placehold.co/400x400/EAE5DC/8D7B68?text=Item+3" alt="Instagram Item 3"></div>
+                <div class="ig-item"><img src="https://placehold.co/400x400/EAE5DC/8D7B68?text=Item+4" alt="Instagram Item 4"></div>
+                <div class="ig-item"><img src="https://placehold.co/400x400/EAE5DC/8D7B68?text=Item+5" alt="Instagram Item 5"></div>
+                <div class="ig-item"><img src="https://placehold.co/400x400/EAE5DC/8D7B68?text=Item+6" alt="Instagram Item 6"></div>
+            </div>
+
+            <!-- ↓ インスタのプロフィールURLに書き換えてください ↓ -->
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="btn-outline">
+                @meguri_vintage をフォローする
+            </a>
         </section>
 
         <!-- お得情報・ルール -->
         <section id="guide">
             <h2 class="section-title serif">Shopping Guide</h2>
             <div class="info-card">
-                <h3 class="serif">Special Discount</h3>
+                <h3 class="serif">Follower Special</h3>
                 <ul class="info-list">
-                    <li>アカウントをフォローしていただくと、全品<span class="highlight">10%OFF</span>！</li>
-                    <li>2点以上のおまとめ買いで、さらに<span class="highlight">20%OFF</span>！</li>
-                    <li>ご購入前にメルカリのコメント欄にて「フォロー割希望」とお伝えください。</li>
-                    <li>安心の<span class="highlight">1〜2日スピード発送</span>対応。</li>
+                    <li>アカウントをフォローしていただくと、全品<span class="highlight">10%OFF</span></li>
+                    <li>2点以上のおまとめ買いで、さらに<span class="highlight">20%OFF</span></li>
+                    <li>ご購入前にメルカリにて「フォロー割希望」とコメントください。</li>
+                    <li>安心の<span class="highlight">1〜2日スピード発送</span>で対応いたします。</li>
                 </ul>
             </div>
-            <p style="font-size: 12px; color: var(--text-light); margin-top: 15px; text-align: center;">
-                ※詳しいお取引のルールは、メルカリのプロフィール欄をご確認ください。
+            <p style="font-size: 13px; color: var(--text-light); margin-top: 20px; text-align: center;">
+                ※詳しいお取引のルールは、メルカリのプロフィールをご確認ください。
             </p>
         </section>
 
-        <!-- ショップ情報（ホームページとしての信頼感） -->
-        <section id="shop">
-            <h2 class="section-title serif">Shop Info</h2>
-            <div class="shop-details">
-                <p><strong>古着屋MEGURI</strong></p>
-                <p style="color: var(--text-light); margin-top: 10px;">
-                    オンライン専門のヴィンテージセレクトショップです。<br>
-                    お問い合わせはメルカリの各商品コメント欄よりお願いいたします。
-                </p>
-            </div>
-        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 古着屋MEGURI All Rights Reserved.</p>
+        <h2 class="logo-text serif" style="font-size: 18px; margin-bottom: 10px;">古着屋MEGURI</h2>
+        <p>Online Vintage Select Shop</p>
+        <p style="margin-top: 30px;">&copy; 2024 古着屋MEGURI All Rights Reserved.</p>
     </footer>
 
 </body>
